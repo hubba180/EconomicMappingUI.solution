@@ -1,18 +1,21 @@
+@{
+    Layout = "_Layout";
+}
 @using EconomicUI.Models
 
 <h1>Search Results:</h1>
 
-<ol>
-@foreach (State state in Model)
-{
-    <ul>
-        <li>ID: @state.StateId</li>
-        <li>Name: @state.Name</li>
-        <li>GDP: @state.GDP</li>
-        <li>Main Import: @state.MainImport</li>
-        <li>Main Export: @state.MainExport</li>
-    </ul>
-    <a href="/States/Details/@(state.StateId)"><p>View Details</p></a>
-    <br>
-}
-</ol>
+<ul>
+
+    @foreach (var item in Model)
+    {
+        <li>ID: @item.StateId</li>
+        <li>Name: @item.Name</li>
+        <li>GDP: @item.GDP</li>
+        <li>Main Import: @item.MainImport</li>
+        <li>Main Export: @item.MainExport</li>
+    }
+</ul>
+
+<input type="button" value="Back to list" onclick="location.href='@Url.Action("Index", "States")';" class="btn btn-primary" />
+<input type="button" value="Return Home" onclick="location.href='@Url.Action("Index", "Home")';" class="btn btn-primary" />
